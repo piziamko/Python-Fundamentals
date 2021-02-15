@@ -1,0 +1,30 @@
+row_count = int(input())
+board = []
+clusters = 0
+
+
+def check_neighbours(row1, col, board1, visited1):
+    visited1[row1][col] = True
+    if row1 > 0 and board1[row1 - 1][col] == "1" and visited1[row1 - 1][col] == False:
+        check_neighbours(row1 - 1, col, board1, visited1)
+    if col > 0 and board1[row1][col - 1] == "1" and visited1[row1][col - 1] == False:
+        check_neighbours(row1, col - 1, board1, visited1)
+    if row1 < len(board1) - 1 and board1[row1 + 1][col] == "1" and visited1[row1 + 1][col] == False:
+        check_neighbours(row1 + 1, col, board1, visited1)
+    if col < len(board1[0]) - 1 and board1[row1][col + 1] == "1" and visited1[row1][col + 1] == False:
+        check_neighbours(row1, col + 1, board1, visited1)
+
+
+for row_index in range(row_count):
+    row = input().split()
+    board.append(row)
+
+visited = [[False for i in range(len(board[0]))] for j in range(len(board))]
+
+for index_row, row in enumerate(board):
+    for index_column, value in enumerate(row):
+        if value == "1" and visited[index_row][index_column] == False:
+            check_neighbours(index_row, index_column, board, visited)
+            clusters += 1
+
+print(clusters)
