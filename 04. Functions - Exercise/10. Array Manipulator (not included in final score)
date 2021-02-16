@@ -1,0 +1,116 @@
+import sys
+
+
+def array_manipulator(array):
+    def exchange(task_array, index):
+        index = int(index)
+        return array[index + 1:] + array[:index + 1]
+
+    def max_num(task_array, odd_or_even):
+        our_max_num = -sys.maxsize
+        is_found = False
+        wanted_index = None
+        if odd_or_even == "even":
+            for index in range(len(task_array)):
+                if int(task_array[index]) % 2 == 0 and our_max_num <= int(task_array[index]):
+                    is_found = True
+                    our_max_num = task_array[index]
+                    wanted_index = index
+        elif odd_or_even == "odd":
+            for index in range(len(task_array)):
+                if int(task_array[index]) % 2 != 0 and our_max_num <= int(task_array[index]):
+                    is_found = True
+                    our_max_num = task_array[index]
+                    wanted_index = index
+        if not is_found:
+            return "No matches"
+        return wanted_index
+
+    def min_num(task_array, odd_or_even):
+        our_min_num = sys.maxsize
+        wanted_index = None
+        is_found = False
+        if odd_or_even == "even":
+            for index in range(len(task_array)):
+                if task_array[index] % 2 == 0 and int(task_array[index]) <= our_min_num:
+                    is_found = True
+                    our_min_num = task_array[index]
+                    wanted_index = index
+        elif odd_or_even == "odd":
+            for index in range(len(task_array)):
+                if task_array[index] % 2 != 0 and int(task_array[index]) <= our_min_num:
+                    is_found = True
+                    our_min_num = task_array[index]
+                    wanted_index = index
+        if not is_found:
+            return "No matches"
+        return wanted_index
+
+    def first_count(array, count, even_or_odd):
+        count = int(count)
+        if len(array) < count:
+            return 'Invalid count'
+        if even_or_odd == 'even':
+            all_nums = [i for i in array if i % 2 == 0]
+            if len(all_nums) < count:
+                return all_nums
+            elif len(all_nums) == 0:
+                return []
+            else:
+                return all_nums[:count]
+
+        elif even_or_odd == 'odd':
+            all_nums = [i for i in array if i % 2 != 0]
+            if len(all_nums) < count:
+                return all_nums
+            elif len(all_nums) == 0:
+                return []
+            else:
+                return all_nums[:count]
+
+    def last_count(array, count, even_or_odd):
+        count = int(count)
+        if len(array) < count:
+            return 'Invalid count'
+        if even_or_odd == 'even':
+            all_nums = [i for i in array if i % 2 == 0]
+            if len(all_nums) < count:
+                return all_nums
+            elif len(all_nums) == 0:
+                return []
+            else:
+                return all_nums[len(all_nums) - count:]
+
+        elif even_or_odd == 'odd':
+            all_nums = [i for i in array if i % 2 != 0]
+            if len(all_nums) < count:
+                return all_nums
+            elif len(all_nums) == 0:
+                return []
+            else:
+                return all_nums[len(all_nums) - count:]
+
+    array = [int(array.split()[c]) for c in range(len(array.split()))]
+    command = input()
+    while command != "end":
+        actual_command = command.split()
+        if actual_command[0] == "exchange":
+            if 0 <= int(actual_command[1]) < len(array):
+                array = exchange(array, actual_command[1])
+            else:
+                print("Invalid index")
+        elif actual_command[0] == "max":
+            print(max_num(array, actual_command[1]))
+        elif actual_command[0] == "min":
+            print(min_num(array, actual_command[1]))
+        elif actual_command[0] == "first":
+            print(first_count(array, actual_command[1], actual_command[2]))
+        elif actual_command[0] == "last":
+            print(last_count(array, actual_command[1], actual_command[2]))
+        command = input()
+    return array
+
+
+our_array = input()
+
+print(array_manipulator(our_array))
