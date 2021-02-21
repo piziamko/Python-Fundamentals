@@ -1,0 +1,16 @@
+new_list = list(map(lambda x: int(x), input().split('@')))
+
+command = input()
+jump_place = 0
+while command != 'Love!':
+    task = command.split()
+    jump_index = int(task[1])
+    jump_place += jump_index
+    if jump_place in range(len(new_list)):
+        new_list[jump_place] -= 2
+    else:
+        jump_place = 0
+
+    command = input()
+
+print(new_list)
