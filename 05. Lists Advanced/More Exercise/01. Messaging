@@ -1,0 +1,11 @@
+numbers = input().split(' ')
+numbers = list(map(int, numbers))
+string = list(input())
+
+for num in numbers:
+    index = sum(int(digit) for digit in str(num))
+    if index < len(string):
+        print(string.pop(index, end='')
+    else:
+        index = index - len(string)
+        print(string.pop(index), end='')
