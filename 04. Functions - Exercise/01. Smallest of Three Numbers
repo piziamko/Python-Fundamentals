@@ -1,9 +1,0 @@
-def find_smallest_int(n_1, n_2, n_3):
-    return min(n_1, n_2, n_3)
-
-
-num_1 = int(input())
-num_2 = int(input())
-num_3 = int(input())
-
-print(find_smallest_int(num_1, num_2, num_3))
