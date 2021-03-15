@@ -1,0 +1,22 @@
+# Elies
+
+word = input()
+digit = ''
+actual_word = ''
+index = 0
+current = ''
+while index < len(word):
+    if word[index].isdigit():
+        while index < len(word) and word[index].isdigit():
+            digit += word[index]
+            index += 1
+        actual_word += int(digit) * current.upper()
+        digit = ''
+        current = ''
+    else:
+        current += word[index]
+        index += 1
+
+
+print(f'Unique symbols used: {len(set(actual_word.upper()))}')
+print(actual_word)
