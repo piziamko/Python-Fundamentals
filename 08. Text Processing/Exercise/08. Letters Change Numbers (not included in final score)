@@ -1,0 +1,19 @@
+all_text = input().split()
+total_sum = 0
+
+for list1 in all_text:
+    current_sum = 0
+    number = int(list1[1:-1])
+    
+    if list1[0].isupper():
+        current_sum = number / (ord(list1[0])-64)
+    else:
+        current_sum = number*(ord(list1[0])-96)
+    if list1[-1].isupper():
+        current_sum -= (ord(list1[-1])-64)
+    else:
+        current_sum += (ord(list1[-1])-96)
+        
+    total_sum += current_sum
+    
+print(f"{total_sum:.2f}")
