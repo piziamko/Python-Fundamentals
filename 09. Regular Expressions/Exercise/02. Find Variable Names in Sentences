@@ -1,11 +1,9 @@
-# Решение ИНЕС
+# Ines
 
 import re
 
-pattern = r"((?<=^_)|(?<=\s_))[A-Za-z0-9]+\b"
+text = input()
+pattern = r"(^_|(?<=\s_))[a-zA-Z0-9]+\b"
 
-data = input()
-
-matches = [el.group() for el in re.finditer(pattern, data)]
-
-print(*matches, sep=",")
+valid_variables = [obj.group() for obj in re.finditer(pattern, text)]
+print(*valid_variables, sep=",")
