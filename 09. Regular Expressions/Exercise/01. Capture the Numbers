@@ -1,12 +1,14 @@
+# Ines
+
 import re
 
-pattern = r'\d+'
+text_line = input()
+pattern = r"\d+"
+all_nums = []
 
-while True:
-    string = input()
-    if string:
-        numbers = re.findall(pattern, string)
-        if numbers:
-            print(*numbers, end=' ')
-    else:
-        break
+while text_line:
+    nums = re.findall(pattern, text_line)
+    all_nums.extend(nums)
+    text_line = input()
+
+print(*all_nums)
