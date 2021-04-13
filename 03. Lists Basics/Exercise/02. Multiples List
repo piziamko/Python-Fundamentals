@@ -1,8 +1,0 @@
-num1 = int(input())
-num2 = int(input())
-
-weird_list = []
-
-for i in range(1, num2 + 1):
-    weird_list.append(i * num1)
-print(weird_list)
