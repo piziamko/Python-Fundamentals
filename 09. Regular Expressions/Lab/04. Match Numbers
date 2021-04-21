@@ -1,0 +1,9 @@
+# Ines
+
+import re
+
+text = input()
+pattern = r'(^|(?<= ))-?\d+(\.\d+)?((?= )|$)'
+
+valid_nums = [matched_obj.group() for matched_obj in re.finditer(pattern, text)]
+print(*valid_nums)
