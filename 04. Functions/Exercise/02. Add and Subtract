@@ -1,15 +1,9 @@
-def add_and_sub(a, b, c):
-    def sumirane(a, b):
-        resultat = a + b
-        return resultat
+def add_and_subtract(num, num_1, num_2):
+    return (num + num_1) - num_2
 
-    def substract(c):
-        resultat1 = sumirane(a,b) - c
-        return resultat1
-    print(substract(c))
 
-num1 = int(input())
-num2 = int(input())
-num3 = int(input())
+n = int(input())
+n1 = int(input())
+n2 = int(input())
 
-add_and_sub(num1, num2, num3)
+print(add_and_subtract(n, n1, n2))
